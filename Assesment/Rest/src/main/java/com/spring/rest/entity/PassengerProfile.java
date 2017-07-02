@@ -3,12 +3,14 @@ package com.spring.rest.entity;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -16,19 +18,24 @@ import org.springframework.stereotype.Component;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Component
+@Table(name="passengerprofile")
 public class PassengerProfile implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+   
     private Integer profileId;
-    
+  
     private String firstName;
 
     private String lastName;
     
+    
     private String address;
     
+
     private String telNo;
     
+   
     private String emailId;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "passengerProfile", cascade = CascadeType.ALL)

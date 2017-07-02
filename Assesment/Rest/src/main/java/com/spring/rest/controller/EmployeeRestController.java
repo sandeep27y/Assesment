@@ -38,14 +38,11 @@ public class EmployeeRestController {
 	@RequestMapping(value="/{employeeId}", method=RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,
 			MediaType.TEXT_HTML_VALUE})
 	public ResponseEntity<?> getPsssengerDetails(@PathVariable String employeeId) throws SQLException {
-		
-		System.out.println("testing: "+employeeId);
 		int empNo = Integer.parseInt(employeeId);
 		
 		
 		PassengerProfile passengerProfile = passengerService.getEmployeeInfo(empNo);
-		
-		System.out.println("testing: "+passengerProfile.getAddress());
+		System.out.println("fhgf: "+passengerProfile.getAddress());
 		if(passengerProfile == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {				

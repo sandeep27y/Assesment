@@ -3,6 +3,7 @@ package org.AilrineRepositories.entity;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,16 +16,22 @@ import javax.persistence.OneToOne;
 public class PassengerProfile implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="profile_id")
     private Integer profileId;
     
+    @Column(name="first_name")
     private String firstName;
 
+    @Column(name="last_name")
     private String lastName;
     
+    @Column(name="address")
     private String address;
     
+    @Column(name="tel_no")
     private String telNo;
     
+    @Column(name="email_id")
     private String emailId;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "passengerProfile", cascade = CascadeType.ALL)

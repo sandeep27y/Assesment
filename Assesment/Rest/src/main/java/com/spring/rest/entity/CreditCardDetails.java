@@ -2,21 +2,26 @@ package com.spring.rest.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Component
+@Table(name="creditcarddetails")
 public class CreditCardDetails implements Serializable {
 
 	
@@ -24,14 +29,19 @@ public class CreditCardDetails implements Serializable {
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "passengerProfile"))
 	@Id
 	@GeneratedValue(generator = "generator")
+
 	private Integer profileId;
 
+	 
 	private Integer cardNumber;
 
+	
 	private String cardType;
 
+	
 	private String expirationMonth;
 
+	
 	private Integer expirationYear;
 	
 	@OneToOne(fetch = FetchType.LAZY)
@@ -65,6 +75,7 @@ public class CreditCardDetails implements Serializable {
 				+ "]";
 	}
 
+	@JsonIgnore
 	public PassengerProfile getPassengerProfile() {
 		return passengerProfile;
 	}

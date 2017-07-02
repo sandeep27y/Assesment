@@ -2,6 +2,7 @@ package org.AilrineRepositories.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,14 +22,19 @@ public class CreditCardDetails implements Serializable {
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "passengerProfile"))
 	@Id
 	@GeneratedValue(generator = "generator")
+	  @Column(name="profile_id")
 	private Integer profileId;
 
+	  @Column(name="card_number")
 	private Integer cardNumber;
 
+	  @Column(name="card_type")
 	private String cardType;
 
+	  @Column(name="expiration_month")
 	private String expirationMonth;
 
+	  @Column(name="expiration_year")
 	private Integer expirationYear;
 	
 	@OneToOne(fetch = FetchType.LAZY)
